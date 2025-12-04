@@ -1,0 +1,692 @@
+const translations = {
+  en: {
+    nav_home: 'Home',
+    nav_about: 'About',
+    nav_skills: 'Skills',
+    nav_experience: 'Experience',
+    nav_projects: 'Projects',
+    nav_education: 'Education',
+    nav_contact: 'Contact',
+    settings_language: 'Language',
+    settings_theme: 'Theme',
+    hero_greeting: "👋 Hi there, I'm",
+    hero_title: 'Backend Developer',
+    hero_description:
+      'Aspiring Backend Developer with expertise in Java Spring Boot and PHP Laravel. Former tour guide with proven English fluency.',
+    hero_cta_projects: 'View Projects',
+    hero_cta_contact: 'Contact Me',
+    about_title: 'About Me',
+    about_subtitle: 'Get to know me better',
+    about_heading: 'Backend Developer & Former Tour Guide',
+    about_p1:
+      'Currently pursuing Advanced Diploma in Software Engineering (ADSE) at Aptech Academy, I specialize in building robust RESTful APIs and microservices using Java Spring Boot and PHP Laravel.',
+    about_p2:
+      'My unique background as a motorbike tour guide for 250+ international tourists has equipped me with exceptional English communication skills and the ability to adapt quickly in high-pressure situations.',
+    about_p3:
+      "I'm actively seeking Backend/Java/Laravel internship opportunities to apply my technical expertise and deliver high-impact solutions in fast-paced development teams.",
+    stat_tours: 'Tours Led',
+    stat_projects: 'Projects',
+    stat_countries: 'Countries',
+    skills_title: 'Technical Skills',
+    skills_subtitle: 'Technologies I work with',
+    skill_advanced: 'Advanced',
+    skill_proficient: 'Proficient',
+    skill_intermediate: 'Intermediate',
+    exp_title: 'Experience',
+    exp_subtitle: 'My professional journey',
+    exp_job_title: 'Scooter Tour Guide',
+    exp_job_company: 'Freelance Tourism Services',
+    exp_job_1:
+      'Led and assisted over 250 motorbike/scooter tours for international tourists in Saigon',
+    exp_job_2:
+      'Conducted daily English-guided tours on Vietnamese history, culture, food, and hidden spots',
+    exp_job_3:
+      'Sharpened advanced English communication skills through interaction with tourists from 50+ countries',
+    exp_job_4:
+      'Demonstrated leadership and quick problem-solving in high-pressure environments',
+    exp_job_5:
+      'Maintained consistently positive attitude ensuring every guest had safe and memorable experience',
+    projects_title: 'Featured Projects',
+    projects_subtitle: 'Recent work and accomplishments',
+    project1_meta: 'Personal Project | Nov 2025 – Dec 2025',
+    project1_desc:
+      'Full-stack MERN-stack note-taking app with Laravel API backend and React/Vite frontend. Features token-based authentication, OTP password reset, admin dashboard with analytics.',
+    project2_meta: 'Team Project (5 Members) | June 2025',
+    project2_desc:
+      'E-commerce platform with Laravel and Blade template. Implemented user authentication with middleware, AJAX-powered cart system with real-time updates, search functionality.',
+    project_demo: 'Live Demo',
+    project_repo: 'Repository',
+    edu_title: 'Education & Certifications',
+    edu_subtitle: 'Academic background and achievements',
+    edu_degree: 'Advanced Diploma in Software Engineering',
+    edu_desc:
+      'Comprehensive program covering software development methodologies, programming languages, database management, and system analysis.',
+    cert1_desc:
+      'Hands-on certification focused on building production-ready Gen AI features: prompt engineering, RAG pipelines, LLM integration.',
+    cert2_desc:
+      'Comprehensive introduction to Generative AI workflows, covering real-world applications and ethical implementation.',
+    contact_title: 'Get In Touch',
+    contact_subtitle: "Let's work together!",
+    form_name: 'Name',
+    form_email: 'Email',
+    form_message: 'Message',
+    form_submit: 'Send Message',
+    footer_text: '© 2025 Vo Cao Thanh Dat (Dave). Built with 💻 and ☕',
+  },
+  vi: {
+    nav_home: 'Trang chủ',
+    nav_about: 'Giới thiệu',
+    nav_skills: 'Kỹ năng',
+    nav_experience: 'Kinh nghiệm',
+    nav_projects: 'Dự án',
+    nav_education: 'Học vấn',
+    nav_contact: 'Liên hệ',
+    settings_language: 'Ngôn ngữ',
+    settings_theme: 'Giao diện',
+    hero_greeting: '👋 Xin chào, tôi là',
+    hero_title: 'Backend Developer',
+    hero_description:
+      'Backend Developer đầy tham vọng với chuyên môn về Java Spring Boot và PHP Laravel. Cựu hướng dẫn viên tour với khả năng tiếng Anh thành thạo.',
+    hero_cta_projects: 'Xem Dự Án',
+    hero_cta_contact: 'Liên Hệ',
+    about_title: 'Giới Thiệu',
+    about_subtitle: 'Tìm hiểu thêm về tôi',
+    about_heading: 'Backend Developer & Cựu Hướng Dẫn Viên',
+    about_p1:
+      'Hiện đang theo học Advanced Diploma in Software Engineering (ADSE) tại Aptech Academy, tôi chuyên xây dựng các RESTful API và microservices mạnh mẽ bằng Java Spring Boot và PHP Laravel.',
+    about_p2:
+      'Lý lịch độc đáo của tôi với vai trò hướng dẫn viên tour xe máy cho hơn 250 khách du lịch quốc tế đã trang bị cho tôi kỹ năng giao tiếp tiếng Anh xuất sắc và khả năng thích ứng nhanh trong các tình huống áp lực cao.',
+    about_p3:
+      'Tôi đang tích cực tìm kiếm cơ hội thực tập Backend/Java/Laravel để áp dụng chuyên môn kỹ thuật và mang lại các giải pháp có tác động cao trong các nhóm phát triển năng động.',
+    stat_tours: 'Tour Hướng Dẫn',
+    stat_projects: 'Dự Án',
+    stat_countries: 'Quốc Gia',
+    skills_title: 'Kỹ Năng Kỹ Thuật',
+    skills_subtitle: 'Công nghệ tôi làm việc với',
+    skill_advanced: 'Nâng cao',
+    skill_proficient: 'Thành thạo',
+    skill_intermediate: 'Trung cấp',
+    exp_title: 'Kinh Nghiệm',
+    exp_subtitle: 'Hành trình nghề nghiệp của tôi',
+    exp_job_title: 'Hướng Dẫn Viên Tour Xe Máy',
+    exp_job_company: 'Dịch Vụ Du Lịch Tự Do',
+    exp_job_1:
+      'Dẫn dắt và hỗ trợ hơn 250 tour xe máy/scooter cho khách du lịch quốc tế tại Sài Gòn',
+    exp_job_2:
+      'Thực hiện các tour hướng dẫn bằng tiếng Anh hàng ngày về lịch sử, văn hóa, ẩm thực Việt Nam',
+    exp_job_3:
+      'Rèn luyện kỹ năng giao tiếp tiếng Anh nâng cao qua tương tác với khách từ hơn 50 quốc gia',
+    exp_job_4:
+      'Thể hiện khả năng lãnh đạo và giải quyết vấn đề nhanh chóng trong môi trường áp lực cao',
+    exp_job_5:
+      'Duy trì thái độ tích cực nhất quán đảm bảo mọi khách có trải nghiệm an toàn và đáng nhớ',
+    projects_title: 'Dự Án Nổi Bật',
+    projects_subtitle: 'Công việc gần đây và thành tựu',
+    project1_meta: 'Dự Án Cá Nhân | Tháng 11 2025 – Tháng 12 2025',
+    project1_desc:
+      'Ứng dụng ghi chú full-stack với Laravel API backend và React/Vite frontend. Tích hợp xác thực token, đặt lại mật khẩu OTP, bảng điều khiển admin với phân tích.',
+    project2_meta: 'Dự Án Nhóm (5 Thành Viên) | Tháng 6 2025',
+    project2_desc:
+      'Nền tảng thương mại điện tử với Laravel và Blade template. Triển khai xác thực người dùng với middleware, hệ thống giỏ hàng AJAX với cập nhật thời gian thực.',
+    project_demo: 'Xem Demo',
+    project_repo: 'Mã Nguồn',
+    edu_title: 'Học Vấn & Chứng Chỉ',
+    edu_subtitle: 'Lý lịch học thuật và thành tựu',
+    edu_degree: 'Văn Bằng Cao Cấp Kỹ Thuật Phần Mềm',
+    edu_desc:
+      'Chương trình toàn diện bao gồm phương pháp phát triển phần mềm, ngôn ngữ lập trình, quản lý cơ sở dữ liệu.',
+    cert1_desc:
+      'Chứng chỉ thực hành tập trung vào xây dựng tính năng Gen AI sẵn sàng sản xuất: kỹ thuật prompt, RAG pipeline, tích hợp LLM.',
+    cert2_desc:
+      'Giới thiệu toàn diện về quy trình Generative AI, bao gồm ứng dụng thực tế và triển khai có đạo đức.',
+    contact_title: 'Liên Hệ',
+    contact_subtitle: 'Hãy cùng làm việc!',
+    form_name: 'Tên',
+    form_email: 'Email',
+    form_message: 'Tin nhắn',
+    form_submit: 'Gửi Tin Nhắn',
+    footer_text: '© 2025 Võ Cao Thành Đạt (Dave). Được xây dựng với 💻 và ☕',
+  },
+  ja: {
+    nav_home: 'ホーム',
+    nav_about: '自己紹介',
+    nav_skills: 'スキル',
+    nav_experience: '経験',
+    nav_projects: 'プロジェクト',
+    nav_education: '学歴',
+    nav_contact: 'お問い合わせ',
+    settings_language: '言語',
+    settings_theme: 'テーマ',
+    hero_greeting: '👋 こんにちは、私は',
+    hero_title: 'バックエンド開発者',
+    hero_description:
+      'Java Spring BootとPHP Laravelの専門知識を持つ意欲的なバックエンド開発者。流暢な英語力を持つ元ツアーガイド。',
+    hero_cta_projects: 'プロジェクトを見る',
+    hero_cta_contact: 'お問い合わせ',
+    about_title: '自己紹介',
+    about_subtitle: '私についてもっと知る',
+    about_heading: 'バックエンド開発者＆元ツアーガイド',
+    about_p1:
+      'Aptech AcademyでAdvanced Diploma in Software Engineering（ADSE）を取得中、Java Spring BootとPHP Laravelを使用した堅牢なRESTful APIとマイクロサービスの構築を専門としています。',
+    about_p2:
+      '250人以上の国際観光客向けのバイクツアーガイドとしての独特な背景により、優れた英語コミュニケーションスキルとプレッシャーの高い状況での迅速な適応能力を身につけました。',
+    about_p3:
+      'Backend/Java/Laravelのインターンシップ機会を積極的に探しており、技術的専門知識を適用し、ペースの速い開発チームで高い影響を与えるソリューションを提供します。',
+    stat_tours: 'ツアー実施',
+    stat_projects: 'プロジェクト',
+    stat_countries: '国',
+    skills_title: '技術スキル',
+    skills_subtitle: '使用する技術',
+    skill_advanced: '上級',
+    skill_proficient: '熟練',
+    skill_intermediate: '中級',
+    exp_title: '経験',
+    exp_subtitle: '私のキャリア',
+    exp_job_title: 'スクーターツアーガイド',
+    exp_job_company: 'フリーランス観光サービス',
+    exp_job_1:
+      'サイゴンで国際観光客向けに250以上のバイク/スクーターツアーを主導・支援',
+    exp_job_2:
+      'ベトナムの歴史、文化、食べ物、隠れたスポットについて英語でのツアーを毎日実施',
+    exp_job_3:
+      '50カ国以上の観光客との交流を通じて高度な英語コミュニケーションスキルを磨く',
+    exp_job_4: 'プレッシャーの高い環境でのリーダーシップと迅速な問題解決を実証',
+    exp_job_5:
+      'すべてのゲストが安全で思い出に残る体験を持てるよう、一貫してポジティブな姿勢を維持',
+    projects_title: '注目のプロジェクト',
+    projects_subtitle: '最近の作業と成果',
+    project1_meta: '個人プロジェクト | 2025年11月 – 2025年12月',
+    project1_desc:
+      'Laravel APIバックエンドとReact/Viteフロントエンドを使用したフルスタックメモアプリ。トークンベース認証、OTPパスワードリセット、分析付き管理ダッシュボードを実装。',
+    project2_meta: 'チームプロジェクト（5人） | 2025年6月',
+    project2_desc:
+      'LaravelとBladeテンプレートを使用したEコマースプラットフォーム。ミドルウェアを使用したユーザー認証、リアルタイム更新のAJAX対応カートシステムを実装。',
+    project_demo: 'デモを見る',
+    project_repo: 'リポジトリ',
+    edu_title: '学歴と資格',
+    edu_subtitle: '学歴と成果',
+    edu_degree: 'ソフトウェアエンジニアリングの上級ディプロマ',
+    edu_desc:
+      'ソフトウェア開発方法論、プログラミング言語、データベース管理、システム分析をカバーする包括的なプログラム。',
+    cert1_desc:
+      '本番環境対応のGen AI機能の構築に焦点を当てた実践的な認定：プロンプトエンジニアリング、RAGパイプライン、LLM統合。',
+    cert2_desc:
+      '実世界のアプリケーションと倫理的実装をカバーするGenerative AIワークフローの包括的な紹介。',
+    contact_title: 'お問い合わせ',
+    contact_subtitle: '一緒に働きましょう！',
+    form_name: '名前',
+    form_email: 'メール',
+    form_message: 'メッセージ',
+    form_submit: 'メッセージを送信',
+    footer_text: '© 2025 Vo Cao Thanh Dat (Dave). 💻 と ☕ で作成',
+  },
+};
+
+let currentLang = localStorage.getItem('language') || 'en';
+let currentTheme = localStorage.getItem('theme') || 'cyberpunk';
+
+// Apply saved preferences
+document.documentElement.setAttribute('data-theme', currentTheme);
+updateTranslations();
+
+// Particle animation
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const particles = [];
+const particleCount = 100;
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.vx = (Math.random() - 0.5) * 0.5;
+    this.vy = (Math.random() - 0.5) * 0.5;
+    this.size = Math.random() * 2 + 1;
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+  }
+  draw() {
+    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue(
+      '--accent-primary',
+    );
+    ctx.globalAlpha = 0.5;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < particleCount; i++) {
+  particles.push(new Particle());
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach((p) => {
+    p.update();
+    p.draw();
+  });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+// Custom cursor
+const cursorDot = document.querySelector('.cursor-dot');
+const cursorOutline = document.querySelector('.cursor-outline');
+
+window.addEventListener('mousemove', (e) => {
+  cursorDot.style.transform = `translate(${e.clientX - 5}px, ${
+    e.clientY - 5
+  }px)`;
+  cursorOutline.style.transform = `translate(${e.clientX - 20}px, ${
+    e.clientY - 20
+  }px)`;
+});
+
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-link');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (window.scrollY >= sectionTop - 200) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach((link) => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
+    }
+  });
+});
+
+// Mobile nav toggle
+const navToggle = document.getElementById('navToggle');
+const navLinksContainer = document.getElementById('navLinks');
+
+navToggle.addEventListener('click', () => {
+  navLinksContainer.classList.toggle('active');
+});
+
+navLinks.forEach((link) => {
+  link.addEventListener('click', () => {
+    navLinksContainer.classList.remove('active');
+  });
+});
+
+// Settings panel toggle
+const settingsToggle = document.getElementById('settingsToggle');
+const settingsPanel = document.getElementById('settingsPanel');
+
+settingsToggle.addEventListener('click', () => {
+  settingsPanel.classList.toggle('open');
+});
+
+// Language switcher
+const langBtns = document.querySelectorAll('.lang-btn');
+langBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    langBtns.forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentLang = btn.getAttribute('data-lang');
+    localStorage.setItem('language', currentLang);
+    updateTranslations();
+  });
+});
+
+// Set active language button
+langBtns.forEach((btn) => {
+  if (btn.getAttribute('data-lang') === currentLang) {
+    btn.classList.add('active');
+  }
+});
+
+function updateTranslations() {
+  document.querySelectorAll('[data-tr]').forEach((el) => {
+    const key = el.getAttribute('data-tr');
+    if (translations[currentLang] && translations[currentLang][key]) {
+      el.textContent = translations[currentLang][key];
+    }
+  });
+}
+
+// Theme switcher
+const themeBtns = document.querySelectorAll('.theme-btn');
+themeBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    themeBtns.forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentTheme = btn.getAttribute('data-theme');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    localStorage.setItem('theme', currentTheme);
+  });
+});
+
+// Set active theme button
+themeBtns.forEach((btn) => {
+  if (btn.getAttribute('data-theme') === currentTheme) {
+    btn.classList.add('active');
+  }
+});
+
+// Typing effect for hero title
+const typingText = document.getElementById('typingText');
+const texts = {
+  en: [
+    'Backend Developer',
+    'Java Expert',
+    'Laravel Specialist',
+    'API Architect',
+  ],
+  vi: [
+    'Backend Developer',
+    'Chuyên Gia Java',
+    'Chuyên Viên Laravel',
+    'Kiến Trúc Sư API',
+  ],
+  ja: [
+    'バックエンド開発者',
+    'Javaエキスパート',
+    'Laravel専門家',
+    'APIアーキテクト',
+  ],
+};
+let textIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function typeEffect() {
+  const currentTexts = texts[currentLang];
+  const currentText = currentTexts[textIndex];
+
+  if (isDeleting) {
+    typingText.textContent = currentText.substring(0, charIndex - 1);
+    charIndex--;
+  } else {
+    typingText.textContent = currentText.substring(0, charIndex + 1);
+    charIndex++;
+  }
+
+  if (!isDeleting && charIndex === currentText.length) {
+    setTimeout(() => (isDeleting = true), 2000);
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    textIndex = (textIndex + 1) % currentTexts.length;
+  }
+
+  const speed = isDeleting ? 50 : 100;
+  setTimeout(typeEffect, speed);
+}
+typeEffect();
+
+// Scroll animations
+const fadeElements = document.querySelectorAll('.fade-in');
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px',
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+fadeElements.forEach((el) => observer.observe(el));
+
+// Back to top button
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 500) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+});
+
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Contact form submission
+const contactForm = document.getElementById('contactForm');
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const submitBtn = contactForm.querySelector('.submit-btn');
+  const originalText = submitBtn.textContent;
+  submitBtn.textContent =
+    currentLang === 'en'
+      ? 'Sending...'
+      : currentLang === 'vi'
+      ? 'Đang gửi...'
+      : '送信中...';
+  submitBtn.classList.add('loading');
+
+  setTimeout(() => {
+    alert(
+      currentLang === 'en'
+        ? "Message sent! I'll get back to you soon."
+        : currentLang === 'vi'
+        ? 'Tin nhắn đã gửi! Tôi sẽ phản hồi bạn sớm.'
+        : 'メッセージが送信されました！すぐに返信します。',
+    );
+    contactForm.reset();
+    submitBtn.textContent = originalText;
+    submitBtn.classList.remove('loading');
+  }, 2000);
+});
+
+// Loading screen
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loading-screen').classList.add('hidden');
+  }, 1000);
+});
+
+// AnimeJS animations for skill cards on hover
+const skillCards = document.querySelectorAll('.skill-card');
+skillCards.forEach((card) => {
+  card.addEventListener('mouseenter', () => {
+    anime({
+      targets: card,
+      scale: 1.05,
+      rotate: '2deg',
+      duration: 300,
+      easing: 'easeOutQuad',
+    });
+  });
+  card.addEventListener('mouseleave', () => {
+    anime({
+      targets: card,
+      scale: 1,
+      rotate: '0deg',
+      duration: 300,
+      easing: 'easeOutQuad',
+    });
+  });
+});
+
+// Konami Code Easter Egg (↑↑↓↓←→←→BA)
+let konamiCode = [];
+const konamiSequence = [
+  'ArrowUp',
+  'ArrowUp',
+  'ArrowDown',
+  'ArrowDown',
+  'ArrowLeft',
+  'ArrowRight',
+  'ArrowLeft',
+  'ArrowRight',
+  'b',
+  'a',
+];
+
+window.addEventListener('keydown', (e) => {
+  konamiCode.push(e.key);
+  konamiCode = konamiCode.slice(-10);
+
+  if (konamiCode.join('') === konamiSequence.join('')) {
+    activateRetroMode();
+  }
+});
+
+function activateRetroMode() {
+  document.body.style.filter = 'hue-rotate(180deg) saturate(3)';
+  alert('🎮 RETRO MODE ACTIVATED! 🎮');
+
+  anime({
+    targets: 'body',
+    rotate: '360deg',
+    duration: 2000,
+    easing: 'easeInOutQuad',
+    complete: () => {
+      document.body.style.filter = '';
+    },
+  });
+}
+
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Project cards 3D tilt effect
+const projectCards = document.querySelectorAll('.project-card');
+projectCards.forEach((card) => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 10;
+    const rotateY = (centerX - x) / 10;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-15px)`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+// Add floating animation to hero section
+anime({
+  targets: '.hero-content',
+  translateY: [-20, 20],
+  duration: 3000,
+  easing: 'easeInOutSine',
+  direction: 'alternate',
+  loop: true,
+});
+
+// Parallax effect on scroll
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  const parallaxElements = document.querySelectorAll('.hero-content');
+  parallaxElements.forEach((el) => {
+    el.style.transform = `translateY(${scrolled * 0.5}px)`;
+  });
+});
+
+// Animate stats on scroll into view
+const statsObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const statNumber = entry.target.querySelector('.stat-number');
+        const finalNumber = parseInt(statNumber.textContent);
+        animateValue(statNumber, 0, finalNumber, 2000);
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.5 },
+);
+
+document.querySelectorAll('.stat-item').forEach((stat) => {
+  statsObserver.observe(stat);
+});
+
+function animateValue(obj, start, end, duration) {
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    const value = Math.floor(progress * (end - start) + start);
+    obj.textContent = value + (obj.textContent.includes('+') ? '+' : '');
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
+}
+
+// Add glitch effect on logo hover
+const logo = document.querySelector('.nav-logo');
+logo.addEventListener('mouseenter', () => {
+  anime({
+    targets: logo,
+    translateX: [
+      { value: -10, duration: 50 },
+      { value: 10, duration: 50 },
+      { value: -5, duration: 50 },
+      { value: 5, duration: 50 },
+      { value: 0, duration: 50 },
+    ],
+    easing: 'easeInOutQuad',
+  });
+});
+
+// Console Easter Egg
+console.log(
+  "%c🚀 Welcome to Dave's Portfolio!",
+  'font-size: 20px; color: #ff006e; font-weight: bold;',
+);
+console.log(
+  "%c💻 Looking for developers? I'm available for hire!",
+  'font-size: 14px; color: #8338ec;',
+);
+console.log(
+  '%c📧 Contact: thanhdattt2006@gmail.com',
+  'font-size: 14px; color: #3a86ff;',
+);
+console.log(
+  '%c🎮 Try the Konami Code: ↑↑↓↓←→←→BA',
+  'font-size: 12px; color: #00b4d8;',
+);

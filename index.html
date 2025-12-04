@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Vo Cao Thanh Dat (Dave) - Backend Developer Portfolio"
+    />
+    <title>Dave | Backend Developer</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="loading-screen"><div class="loading-logo">DAVE</div></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <canvas id="particle-canvas"></canvas>
+
+    <nav id="navbar">
+      <div class="nav-logo">DAVE</div>
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="#hero" class="nav-link active" data-tr="nav_home">Home</a>
+        </li>
+        <li><a href="#about" class="nav-link" data-tr="nav_about">About</a></li>
+        <li>
+          <a href="#skills" class="nav-link" data-tr="nav_skills">Skills</a>
+        </li>
+        <li>
+          <a href="#experience" class="nav-link" data-tr="nav_experience"
+            >Experience</a
+          >
+        </li>
+        <li>
+          <a href="#projects" class="nav-link" data-tr="nav_projects"
+            >Projects</a
+          >
+        </li>
+        <li>
+          <a href="#education" class="nav-link" data-tr="nav_education"
+            >Education</a
+          >
+        </li>
+        <li>
+          <a href="#contact" class="nav-link" data-tr="nav_contact">Contact</a>
+        </li>
+      </ul>
+      <div class="nav-toggle" id="navToggle">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+
+    <div class="settings-toggle" id="settingsToggle">
+      <i class="fas fa-cog"></i>
+    </div>
+    <div class="settings-panel" id="settingsPanel">
+      <div class="settings-section">
+        <h3 data-tr="settings_language">Language</h3>
+        <div class="language-options">
+          <button class="lang-btn active" data-lang="en">🇬🇧</button>
+          <button class="lang-btn" data-lang="vi">🇻🇳</button>
+          <button class="lang-btn" data-lang="ja">🇯🇵</button>
+        </div>
+      </div>
+      <div class="settings-section">
+        <h3 data-tr="settings_theme">Theme</h3>
+        <div class="theme-options">
+          <button class="theme-btn active" data-theme="cyberpunk">
+            <span class="theme-label">Cyberpunk</span>
+          </button>
+          <button class="theme-btn" data-theme="ocean">
+            <span class="theme-label">Ocean</span>
+          </button>
+          <button class="theme-btn" data-theme="sunset">
+            <span class="theme-label">Sunset</span>
+          </button>
+          <button class="theme-btn" data-theme="forest">
+            <span class="theme-label">Forest</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <section id="hero">
+      <div class="hero-content">
+        <div class="hero-greeting" data-tr="hero_greeting">
+          👋 Hi there, I'm
+        </div>
+        <h1 class="hero-name">Vo Cao Thanh Dat</h1>
+        <div class="hero-title" id="typingText" data-tr="hero_title">
+          Backend Developer
+        </div>
+        <p class="hero-description" data-tr="hero_description">
+          Aspiring Backend Developer with expertise in Java Spring Boot and PHP
+          Laravel. Former tour guide with proven English fluency.
+        </p>
+        <div class="hero-cta">
+          <a
+            href="#projects"
+            class="cta-btn cta-primary"
+            data-tr="hero_cta_projects"
+            >View Projects</a
+          >
+          <a
+            href="#contact"
+            class="cta-btn cta-secondary"
+            data-tr="hero_cta_contact"
+            >Contact Me</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title" data-tr="about_title">About Me</h2>
+      <p class="section-subtitle" data-tr="about_subtitle">
+        Get to know me better
+      </p>
+      <div class="about-content">
+        <div class="about-image fade-in">
+          <img src="assets/CV-img.jpg" alt="Võ Cao Thành Đạt (Dave)" />
+        </div>
+        <div class="about-text fade-in">
+          <h3 data-tr="about_heading">Backend Developer & Former Tour Guide</h3>
+          <p data-tr="about_p1">
+            Currently pursuing Advanced Diploma in Software Engineering (ADSE)
+            at Aptech Academy, I specialize in building robust RESTful APIs and
+            microservices using Java Spring Boot and PHP Laravel.
+          </p>
+          <p data-tr="about_p2">
+            My unique background as a motorbike tour guide for 250+
+            international tourists has equipped me with exceptional English
+            communication skills and the ability to adapt quickly in
+            high-pressure situations.
+          </p>
+          <p data-tr="about_p3">
+            I'm actively seeking Backend/Java/Laravel internship opportunities
+            to apply my technical expertise and deliver high-impact solutions in
+            fast-paced development teams.
+          </p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <div class="stat-number">250+</div>
+              <div class="stat-label" data-tr="stat_tours">Tours Led</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">2+</div>
+              <div class="stat-label" data-tr="stat_projects">Projects</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">50+</div>
+              <div class="stat-label" data-tr="stat_countries">Countries</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title" data-tr="skills_title">Technical Skills</h2>
+      <p class="section-subtitle" data-tr="skills_subtitle">
+        Technologies I work with
+      </p>
+      <div class="skills-grid">
+        <div class="skill-card fade-in">
+          <i class="fab fa-java skill-icon"></i>
+          <div class="skill-name">Java</div>
+          <div class="skill-level" data-tr="skill_advanced">Advanced</div>
+        </div>
+        <div class="skill-card fade-in">
+          <i class="fab fa-php skill-icon"></i>
+          <div class="skill-name">PHP</div>
+          <div class="skill-level" data-tr="skill_advanced">Advanced</div>
+        </div>
+        <div class="skill-card fade-in">
+          <i class="fab fa-laravel skill-icon"></i>
+          <div class="skill-name">Laravel</div>
+          <div class="skill-level" data-tr="skill_proficient">Proficient</div>
+        </div>
+        <div class="skill-card fade-in">
+          <i class="fas fa-leaf skill-icon"></i>
+          <div class="skill-name">Spring Boot</div>
+          <div class="skill-level" data-tr="skill_proficient">Proficient</div>
+        </div>
+        <div class="skill-card fade-in">
+          <i class="fab fa-react skill-icon"></i>
+          <div class="skill-name">ReactJS</div>
+          <div class="skill-level" data-tr="skill_intermediate">
+            Intermediate
+          </div>
+        </div>
+        <div class="skill-card fade-in">
+          <i class="fab fa-docker skill-icon"></i>
+          <div class="skill-name">Docker</div>
+          <div class="skill-level" data-tr="skill_intermediate">
+            Intermediate
+          </div>
+        </div>
+        <div class="skill-card fade-in">
+          <i class="fas fa-database skill-icon"></i>
+          <div class="skill-name">MySQL</div>
+          <div class="skill-level" data-tr="skill_proficient">Proficient</div>
+        </div>
+        <div class="skill-card fade-in">
+          <i class="fab fa-git-alt skill-icon"></i>
+          <div class="skill-name">Git</div>
+          <div class="skill-level" data-tr="skill_proficient">Proficient</div>
+        </div>
+        <div class="skill-card fade-in">
+          <i class="fab fa-figma skill-icon"></i>
+          <div class="skill-name">Figma</div>
+          <div class="skill-level" data-tr="skill_intermediate">
+            Intermediate
+          </div>
+        </div>
+        <div class="skill-card fade-in">
+          <i class="fas fa-code skill-icon"></i>
+          <div class="skill-name">RESTful API</div>
+          <div class="skill-level" data-tr="skill_advanced">Advanced</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2 class="section-title" data-tr="exp_title">Experience</h2>
+      <p class="section-subtitle" data-tr="exp_subtitle">
+        My professional journey
+      </p>
+      <div class="timeline">
+        <div class="timeline-item fade-in">
+          <div class="timeline-content">
+            <div class="timeline-date">2024 - Present</div>
+            <h3 class="timeline-title" data-tr="exp_job_title">
+              Scooter Tour Guide
+            </h3>
+            <div class="timeline-company" data-tr="exp_job_company">
+              Freelance Tourism Services
+            </div>
+            <ul class="timeline-description">
+              <li data-tr="exp_job_1">
+                Led and assisted over 250 motorbike/scooter tours for
+                international tourists in Saigon
+              </li>
+              <li data-tr="exp_job_2">
+                Conducted daily English-guided tours on Vietnamese history,
+                culture, food, and hidden spots
+              </li>
+              <li data-tr="exp_job_3">
+                Sharpened advanced English communication skills through
+                interaction with tourists from 50+ countries
+              </li>
+              <li data-tr="exp_job_4">
+                Demonstrated leadership and quick problem-solving in
+                high-pressure environments
+              </li>
+              <li data-tr="exp_job_5">
+                Maintained consistently positive attitude ensuring every guest
+                had safe and memorable experience
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title" data-tr="projects_title">Featured Projects</h2>
+      <p class="section-subtitle" data-tr="projects_subtitle">
+        Recent work and accomplishments
+      </p>
+      <div class="projects-grid">
+        <div class="project-card fade-in">
+          <div class="project-image">
+            <img
+              src="assets/vietnote.png"
+              class="project-image"
+              alt=""
+            /><i></i>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Vietnote Fullstack App</h3>
+            <div class="project-meta" data-tr="project1_meta">
+              Personal Project | Nov 2025 – Dec 2025
+            </div>
+            <p class="project-description" data-tr="project1_desc">
+              Full-stack MERN-stack note-taking app with Laravel API backend and
+              React/Vite frontend. Features token-based authentication, OTP
+              password reset, admin dashboard with analytics.
+            </p>
+            <div class="project-tech">
+              <span class="tech-badge">Laravel</span>
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">Vite</span>
+              <span class="tech-badge">Docker</span>
+              <span class="tech-badge">Sanctum</span>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://vietnote.vercel.app/login"
+                class="project-link demo"
+                target="_blank"
+                ><i class="fas fa-external-link-alt"></i
+                ><span data-tr="project_demo">Live Demo</span></a
+              >
+              <a
+                href="https://github.com/thanhdattt2006/Vietnote"
+                target="_blank"
+                class="project-link repo"
+                ><i class="fab fa-github"></i
+                ><span data-tr="project_repo">Repository</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="project-card fade-in">
+          <div class="project-image">
+            <img src="assets/laravel.png" class="project-image" alt="" /><i></i>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Full-Stack Shoe Store</h3>
+            <div class="project-meta" data-tr="project2_meta">
+              Team Project (5 Members) | June 2025
+            </div>
+            <p class="project-description" data-tr="project2_desc">
+              E-commerce platform with Laravel and Blade template. Implemented
+              user authentication with middleware, AJAX-powered cart system with
+              real-time updates, search functionality.
+            </p>
+            <div class="project-tech">
+              <span class="tech-badge">Laravel</span>
+              <span class="tech-badge">Blade</span>
+              <span class="tech-badge">AJAX</span>
+              <span class="tech-badge">MySQL</span>
+              <span class="tech-badge">Bootstrap</span>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://laravel-nike-store.onrender.com"
+                class="project-link demo"
+                target="_blank"
+                ><i class="fas fa-external-link-alt"></i
+                ><span data-tr="project_demo">Live Demo</span></a
+              >
+              <a
+                href="https://github.com/thanhdattt2006/Laravel-Store"
+                class="project-link repo"
+                target="_blank"
+                ><i class="fab fa-github"></i
+                ><span data-tr="project_repo">Repository</span></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2 class="section-title" data-tr="edu_title">
+        Education & Certifications
+      </h2>
+      <p class="section-subtitle" data-tr="edu_subtitle">
+        Academic background and achievements
+      </p>
+      <div class="education-grid">
+        <div class="education-card fade-in">
+          <i class="fas fa-graduation-cap education-icon"></i>
+          <h3 class="education-title" data-tr="edu_degree">
+            Advanced Diploma in Software Engineering
+          </h3>
+          <div class="education-institution">Aptech Computer Education</div>
+          <div class="education-date">9/2024 - Present</div>
+          <p class="education-description" data-tr="edu_desc">
+            Comprehensive program covering software development methodologies,
+            programming languages, database management, and system analysis.
+          </p>
+        </div>
+        <div class="education-card fade-in">
+          <i class="fas fa-certificate education-icon"></i>
+          <h3 class="education-title">
+            Practical Generative AI for Developers
+          </h3>
+          <div class="education-institution">Aptech Global Academy</div>
+          <div class="education-date">September 2025</div>
+          <p class="education-description" data-tr="cert1_desc">
+            Hands-on certification focused on building production-ready Gen AI
+            features: prompt engineering, RAG pipelines, LLM integration.
+          </p>
+        </div>
+        <div class="education-card fade-in">
+          <i class="fas fa-award education-icon"></i>
+          <h3 class="education-title">Practical Generative AI for Everyone</h3>
+          <div class="education-institution">Aptech Global Academy</div>
+          <div class="education-date">August 2025</div>
+          <p class="education-description" data-tr="cert2_desc">
+            Comprehensive introduction to Generative AI workflows, covering
+            real-world applications and ethical implementation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title" data-tr="contact_title">Get In Touch</h2>
+      <p class="section-subtitle" data-tr="contact_subtitle">
+        Let's work together!
+      </p>
+      <div class="contact-container">
+        <form class="contact-form fade-in" id="contactForm">
+          <div class="form-group">
+            <label for="name" data-tr="form_name">Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email" data-tr="form_email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="message" data-tr="form_message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn" data-tr="form_submit">
+            Send Message
+          </button>
+        </form>
+        <div class="social-links fade-in">
+          <a href="mailto:thanhdattt2006@gmail.com" class="social-link"
+            ><i class="fas fa-envelope"></i
+          ></a>
+          <a
+            href="https://github.com/thanhdattt2006"
+            target="_blank"
+            class="social-link"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/th%C3%A0nh-%C4%91%E1%BA%A1t-619b37340/"
+            target="_blank"
+            class="social-link"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a href="tel:+84775255721" class="social-link"
+            ><i class="fas fa-phone"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p data-tr="footer_text">
+        © 2025 Vo Cao Thanh Dat (Dave). Built with 💻 and ☕'
+      </p>
+    </footer>
+    <div class="back-to-top" id="backToTop"><i class="fas fa-rocket"></i></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
