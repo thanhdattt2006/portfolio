@@ -1,60 +1,30 @@
-# Online Portfolio and Professional CV
+# Võ Cao Thành Đạt (Dave) - Premium Backend Developer Portfolio
 
-## Introduction
-I am Vo Cao Thanh Dat (Dave), a Software Developer focused on building high-performance web applications and solving complex technical problems. This portfolio is built with pure HTML5, CSS3, and JavaScript, prioritizing speed, responsiveness, and clean code architecture.
+> Aspiring Backend Developer with expertise in Java Spring Boot and PHP Laravel. Former tour guide with proven English fluency.
 
-## Tech Stack
+## 🚀 Live Demo
+🌍 **[https://thanhdattt2006.github.io/portfolio/](https://thanhdattt2006.github.io/portfolio/)**
 
-### Frontend
-- Core: HTML5, CSS3, JavaScript (ES6+)
-- Frameworks and Libraries: ReactJS, Blade Template (Laravel)
-- Design: Responsive Design, Flexbox, CSS Grid
+## 🎯 About The Project
+This repository contains the source code for my personal portfolio. It is designed and engineered with premium UI/UX standards, focusing on high performance, modern aesthetics, and comprehensive SEO optimization.
 
-### Backend
-- Languages: Java, PHP
-- Frameworks: Spring Boot, Laravel
-- Architecture: RESTful APIs, MVC, Microservices design patterns
+**Key Features:**
+- **Premium UI/UX:** Built with Tailwind CSS, featuring modern glassmorphism, responsive grid layouts, and subtle CSS-driven animations (Zero external JS animation dependencies for max performance).
+- **Multiple Themes:** Includes 4 highly sought-after developer themes: Midnight, Dracula, Nord, and Sage.
+- **Multilingual Support:** Dynamic language switching between English and Vietnamese.
+- **SEO Optimized:** Fully integrated with Google Search Console verification, Schema.org JSON-LD (Person structure), Open Graph, and Twitter Cards to maximize search visibility.
+- **Interactive Elements:** Custom cursor, particle canvas background, 3D tilt effects on cards, and a hidden Konami Code Easter Egg.
 
-### Database and Tools
-- Database: MySQL, PostgreSQL
-- Tools: Git, GitHub, Docker, AJAX, OAuth 2.0
-- Integration: SMTP, REST APIs
+## 💻 Tech Stack
+- **HTML5** (Semantic & Accessible)
+- **Tailwind CSS** (Utility-first Styling)
+- **Vanilla JavaScript** (ES6+, Web APIs, IntersectionObserver, Canvas API)
 
-## Key Projects
-
-### 1. Vietnote - Fullstack Note-taking Application
-- Description: A robust note-taking application supporting real-time synchronization.
-- Technology: Laravel API, ReactJS (Vite), Docker, OAuth 2.0.
-- Core Features: Secure authentication via OAuth2 and containerized deployment with Docker.
-
-### 2. Full-Stack Shoe Store Website
-- Description: An e-commerce platform specializing in footwear.
-- Technology: Laravel, Blade, AJAX, MySQL.
-- Core Features: Smooth shopping experience using AJAX and optimized inventory management.
-
-## Education and Certifications
-
-- Advanced Diploma in Software Engineering (ADSE) - Aptech (2023 - Present)
-- Practical Generative AI Certifications (08/2025 and 09/2025)
-
-## Installation and Deployment
-
-To view this project locally:
-
-1. Clone the repository:
-   git clone https://github.com/vctdat-dave/portfolio-cv.git
-
-2. Navigate to the project directory:
-   cd portfolio-cv
-
-3. Run the application:
-   - Use the Live Server extension in VS Code.
-   - Or open the index.html file directly in any modern web browser.
-
-## Contact Information
-
+## 👤 Author
+**Võ Cao Thành Đạt (Dave)**
+- GitHub: [@thanhdattt2006](https://github.com/thanhdattt2006)
+- LinkedIn: [Võ Cao Thành Đạt](https://www.linkedin.com/in/thành-đạt-619b37340/)
 - Email: thanhdattt2006@gmail.com
-- Phone: +84 775 255 721
-- Location: Ho Chi Minh City, Vietnam
-- GitHub: github.com/vctdat-dave
-- LinkedIn: linkedin.com/in/thanh-dat-vo
+
+---
+*Built with 💻 and ☕ by Võ Cao Thành Đạt*
