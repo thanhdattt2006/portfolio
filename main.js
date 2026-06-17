@@ -236,7 +236,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const particles = [];
-const particleCount = 100;
+const particleCount = window.innerWidth < 768 ? 50 : 100;
 
 class Particle {
   constructor() {
@@ -255,7 +255,7 @@ class Particle {
   draw() {
     ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue(
       '--accent-primary',
-    );
+    ).trim() || '#3b82f6';
     ctx.globalAlpha = 0.5;
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -286,58 +286,88 @@ window.addEventListener('resize', () => {
 const cursorDot = document.querySelector('.cursor-dot');
 const cursorOutline = document.querySelector('.cursor-outline');
 
-window.addEventListener('mousemove', (e) => {
-  cursorDot.style.transform = `translate(${e.clientX - 5}px, ${
-    e.clientY - 5
-  }px)`;
-  cursorOutline.style.transform = `translate(${e.clientX - 20}px, ${
-    e.clientY - 20
-  }px)`;
-});
+if (cursorDot && cursorOutline && window.innerWidth >= 768) {
+  window.addEventListener('mousemove', (e) => {
+    cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    cursorOutline.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+  });
+
+  document.addEventListener('mousedown', () => {
+    cursorOutline.style.transform = `translate(${event.clientX}px, ${event.clientY}px) scale(0.8)`;
+    cursorOutline.style.borderColor = 'var(--accent-primary)';
+  });
+
+  document.addEventListener('mouseup', () => {
+    cursorOutline.style.transform = `translate(${event.clientX}px, ${event.clientY}px) scale(1)`;
+    cursorOutline.style.borderColor = 'rgba(255,255,255,0.2)';
+  });
+}
 
 // Navbar scroll effect
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 100) {
-    navbar.classList.add('scrolled');
+  if (window.scrollY > 50) {
+    navbar.classList.add('glass-nav');
+    navbar.classList.remove('py-6');
+    navbar.classList.add('py-4');
   } else {
-    navbar.classList.remove('scrolled');
+    navbar.classList.remove('glass-nav');
+    navbar.classList.add('py-6');
+    navbar.classList.remove('py-4');
   }
 });
 
 // Active nav link on scroll
 const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-link');
+const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
 
 window.addEventListener('scroll', () => {
   let current = '';
   sections.forEach((section) => {
     const sectionTop = section.offsetTop;
     const sectionHeight = section.clientHeight;
-    if (window.scrollY >= sectionTop - 200) {
+    if (window.scrollY >= sectionTop - 300) {
       current = section.getAttribute('id');
     }
   });
 
   navLinks.forEach((link) => {
-    link.classList.remove('active');
+    link.classList.remove('active', 'text-accent-primary');
+    link.classList.add('text-text-secondary');
     if (link.getAttribute('href') === `#${current}`) {
-      link.classList.add('active');
+      link.classList.add('active', 'text-text-primary');
+      if(link.classList.contains('mobile-nav-link')) {
+         link.classList.add('text-accent-primary');
+      }
     }
   });
 });
 
 // Mobile nav toggle
 const navToggle = document.getElementById('navToggle');
-const navLinksContainer = document.getElementById('navLinks');
+const mobileMenu = document.getElementById('mobileMenu');
 
 navToggle.addEventListener('click', () => {
-  navLinksContainer.classList.toggle('active');
+  mobileMenu.classList.toggle('translate-x-full');
+  const spans = navToggle.querySelectorAll('span');
+  if (!mobileMenu.classList.contains('translate-x-full')) {
+    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+  } else {
+    spans[0].style.transform = 'none';
+    spans[1].style.opacity = '1';
+    spans[2].style.transform = 'none';
+  }
 });
 
 navLinks.forEach((link) => {
   link.addEventListener('click', () => {
-    navLinksContainer.classList.remove('active');
+    mobileMenu.classList.add('translate-x-full');
+    const spans = navToggle.querySelectorAll('span');
+    spans[0].style.transform = 'none';
+    spans[1].style.opacity = '1';
+    spans[2].style.transform = 'none';
   });
 });
 
@@ -346,15 +376,21 @@ const settingsToggle = document.getElementById('settingsToggle');
 const settingsPanel = document.getElementById('settingsPanel');
 
 settingsToggle.addEventListener('click', () => {
-  settingsPanel.classList.toggle('open');
+  settingsPanel.classList.toggle('translate-x-full');
+});
+
+document.addEventListener('click', (e) => {
+  if (!settingsPanel.contains(e.target) && !settingsToggle.contains(e.target) && !settingsPanel.classList.contains('translate-x-full')) {
+    settingsPanel.classList.add('translate-x-full');
+  }
 });
 
 // Language switcher
 const langBtns = document.querySelectorAll('.lang-btn');
 langBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
-    langBtns.forEach((b) => b.classList.remove('active'));
-    btn.classList.add('active');
+    langBtns.forEach((b) => b.classList.remove('border-accent-primary', 'bg-accent-primary/10'));
+    btn.classList.add('border-accent-primary', 'bg-accent-primary/10');
     currentLang = btn.getAttribute('data-lang');
     localStorage.setItem('language', currentLang);
     updateTranslations();
@@ -364,7 +400,7 @@ langBtns.forEach((btn) => {
 // Set active language button
 langBtns.forEach((btn) => {
   if (btn.getAttribute('data-lang') === currentLang) {
-    btn.classList.add('active');
+    btn.classList.add('border-accent-primary', 'bg-accent-primary/10');
   }
 });
 
@@ -381,8 +417,10 @@ function updateTranslations() {
 const themeBtns = document.querySelectorAll('.theme-btn');
 themeBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
-    themeBtns.forEach((b) => b.classList.remove('active'));
-    btn.classList.add('active');
+    themeBtns.forEach((b) => b.classList.remove('border-white'));
+    themeBtns.forEach((b) => b.classList.add('border-transparent'));
+    btn.classList.add('border-white');
+    btn.classList.remove('border-transparent');
     currentTheme = btn.getAttribute('data-theme');
     document.documentElement.setAttribute('data-theme', currentTheme);
     localStorage.setItem('theme', currentTheme);
@@ -392,7 +430,8 @@ themeBtns.forEach((btn) => {
 // Set active theme button
 themeBtns.forEach((btn) => {
   if (btn.getAttribute('data-theme') === currentTheme) {
-    btn.classList.add('active');
+    btn.classList.add('border-white');
+    btn.classList.remove('border-transparent');
   }
 });
 
@@ -441,7 +480,7 @@ function typeEffect() {
     textIndex = (textIndex + 1) % currentTexts.length;
   }
 
-  const speed = isDeleting ? 50 : 100;
+  const speed = isDeleting ? 30 : 100;
   setTimeout(typeEffect, speed);
 }
 typeEffect();
@@ -468,8 +507,10 @@ const backToTop = document.getElementById('backToTop');
 window.addEventListener('scroll', () => {
   if (window.scrollY > 500) {
     backToTop.classList.add('visible');
+    backToTop.classList.remove('opacity-0', 'invisible');
   } else {
     backToTop.classList.remove('visible');
+    backToTop.classList.add('opacity-0', 'invisible');
   }
 });
 
@@ -489,7 +530,7 @@ contactForm.addEventListener('submit', (e) => {
       : currentLang === 'vi'
       ? 'Đang gửi...'
       : '送信中...';
-  submitBtn.classList.add('loading');
+  submitBtn.classList.add('loading', 'opacity-80', 'pointer-events-none');
 
   setTimeout(() => {
     alert(
@@ -501,7 +542,7 @@ contactForm.addEventListener('submit', (e) => {
     );
     contactForm.reset();
     submitBtn.textContent = originalText;
-    submitBtn.classList.remove('loading');
+    submitBtn.classList.remove('loading', 'opacity-80', 'pointer-events-none');
   }, 2000);
 });
 
@@ -509,30 +550,14 @@ contactForm.addEventListener('submit', (e) => {
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loading-screen').classList.add('hidden');
-  }, 1000);
-});
-
-// AnimeJS animations for skill cards on hover
-const skillCards = document.querySelectorAll('.skill-card');
-skillCards.forEach((card) => {
-  card.addEventListener('mouseenter', () => {
-    anime({
-      targets: card,
-      scale: 1.05,
-      rotate: '2deg',
-      duration: 300,
-      easing: 'easeOutQuad',
+    // Ensure all fade in elements in view load immediately
+    fadeElements.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      if(rect.top < window.innerHeight) {
+         el.classList.add('visible');
+      }
     });
-  });
-  card.addEventListener('mouseleave', () => {
-    anime({
-      targets: card,
-      scale: 1,
-      rotate: '0deg',
-      duration: 300,
-      easing: 'easeOutQuad',
-    });
-  });
+  }, 800);
 });
 
 // Konami Code Easter Egg (↑↑↓↓←→←→BA)
@@ -560,67 +585,32 @@ window.addEventListener('keydown', (e) => {
 });
 
 function activateRetroMode() {
-  document.body.style.filter = 'hue-rotate(180deg) saturate(3)';
+  document.body.classList.add('retro-mode');
   alert('🎮 RETRO MODE ACTIVATED! 🎮');
-
-  anime({
-    targets: 'body',
-    rotate: '360deg',
-    duration: 2000,
-    easing: 'easeInOutQuad',
-    complete: () => {
-      document.body.style.filter = '';
-    },
-  });
+  
+  setTimeout(() => {
+    document.body.classList.remove('retro-mode');
+  }, 1500);
 }
 
-// Smooth scroll for navigation links
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
-
-// Project cards 3D tilt effect
+// Project cards 3D tilt effect (Kept from original but without anime.js)
 const projectCards = document.querySelectorAll('.project-card');
 projectCards.forEach((card) => {
   card.addEventListener('mousemove', (e) => {
+    if(window.innerWidth < 768) return;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / 10;
-    const rotateY = (centerX - x) / 10;
+    const rotateX = (y - centerY) / 15;
+    const rotateY = (centerX - x) / 15;
 
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-15px)`;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
   });
 
   card.addEventListener('mouseleave', () => {
     card.style.transform = '';
-  });
-});
-
-// Add floating animation to hero section
-anime({
-  targets: '.hero-content',
-  translateY: [-20, 20],
-  duration: 3000,
-  easing: 'easeInOutSine',
-  direction: 'alternate',
-  loop: true,
-});
-
-// Parallax effect on scroll
-window.addEventListener('scroll', () => {
-  const scrolled = window.pageYOffset;
-  const parallaxElements = document.querySelectorAll('.hero-content');
-  parallaxElements.forEach((el) => {
-    el.style.transform = `translateY(${scrolled * 0.5}px)`;
   });
 });
 
@@ -630,9 +620,11 @@ const statsObserver = new IntersectionObserver(
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const statNumber = entry.target.querySelector('.stat-number');
-        const finalNumber = parseInt(statNumber.textContent);
-        animateValue(statNumber, 0, finalNumber, 2000);
-        statsObserver.unobserve(entry.target);
+        if(statNumber && !statNumber.dataset.animated) {
+            const finalNumber = parseInt(statNumber.textContent);
+            animateValue(statNumber, 0, finalNumber, 2000);
+            statNumber.dataset.animated = "true";
+        }
       }
     });
   },
@@ -657,36 +649,20 @@ function animateValue(obj, start, end, duration) {
   window.requestAnimationFrame(step);
 }
 
-// Add glitch effect on logo hover
-const logo = document.querySelector('.nav-logo');
-logo.addEventListener('mouseenter', () => {
-  anime({
-    targets: logo,
-    translateX: [
-      { value: -10, duration: 50 },
-      { value: 10, duration: 50 },
-      { value: -5, duration: 50 },
-      { value: 5, duration: 50 },
-      { value: 0, duration: 50 },
-    ],
-    easing: 'easeInOutQuad',
-  });
-});
-
 // Console Easter Egg
 console.log(
   "%c🚀 Welcome to Dave's Portfolio!",
-  'font-size: 20px; color: #ff006e; font-weight: bold;',
+  'font-size: 20px; color: #3b82f6; font-weight: bold;',
 );
 console.log(
   "%c💻 Looking for developers? I'm available for hire!",
-  'font-size: 14px; color: #8338ec;',
+  'font-size: 14px; color: #8b5cf6;',
 );
 console.log(
   '%c📧 Contact: thanhdattt2006@gmail.com',
-  'font-size: 14px; color: #3a86ff;',
+  'font-size: 14px; color: #ec4899;',
 );
 console.log(
   '%c🎮 Try the Konami Code: ↑↑↓↓←→←→BA',
-  'font-size: 12px; color: #00b4d8;',
+  'font-size: 12px; color: #10b981;',
 );
