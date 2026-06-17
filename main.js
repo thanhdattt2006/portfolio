@@ -453,16 +453,27 @@ contactForm.addEventListener('submit', (e) => {
   submitBtn.textContent = currentLang === 'vi' ? 'Đang gửi...' : 'Sending...';
   submitBtn.classList.add('loading', 'opacity-80', 'pointer-events-none');
 
-  setTimeout(() => {
-    alert(
-      currentLang === 'vi'
-        ? 'Tin nhắn đã gửi! Tôi sẽ phản hồi bạn sớm.'
-        : "Message sent! I'll get back to you soon."
-    );
-    contactForm.reset();
-    submitBtn.textContent = originalText;
-    submitBtn.classList.remove('loading', 'opacity-80', 'pointer-events-none');
-  }, 2000);
+  emailjs.sendForm('service_5zressf', 'template_i1h0kbo', contactForm)
+    .then(() => {
+      alert(
+        currentLang === 'vi'
+          ? 'Tin nhắn đã gửi thành công! Tôi sẽ phản hồi bạn sớm nhất có thể.'
+          : "Message sent successfully! I'll get back to you as soon as possible."
+      );
+      contactForm.reset();
+    })
+    .catch((error) => {
+      console.error('EmailJS Error:', error);
+      alert(
+        currentLang === 'vi'
+          ? 'Có lỗi xảy ra khi gửi tin nhắn. Vui lòng thử lại sau.'
+          : "Something went wrong. Please try again later."
+      );
+    })
+    .finally(() => {
+      submitBtn.textContent = originalText;
+      submitBtn.classList.remove('loading', 'opacity-80', 'pointer-events-none');
+    });
 });
 
 // Loading screen
