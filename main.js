@@ -147,83 +147,10 @@ const translations = {
     form_submit: 'Gửi Tin Nhắn',
     footer_text: '© 2025 Võ Cao Thành Đạt (Dave). Được xây dựng với 💻 và ☕',
   },
-  ja: {
-    nav_home: 'ホーム',
-    nav_about: '自己紹介',
-    nav_skills: 'スキル',
-    nav_experience: '経験',
-    nav_projects: 'プロジェクト',
-    nav_education: '学歴',
-    nav_contact: 'お問い合わせ',
-    settings_language: '言語',
-    settings_theme: 'テーマ',
-    hero_greeting: '👋 こんにちは、私は',
-    hero_title: 'バックエンド開発者',
-    hero_description:
-      'Java Spring BootとPHP Laravelの専門知識を持つ意欲的なバックエンド開発者。流暢な英語力を持つ元ツアーガイド。',
-    hero_cta_projects: 'プロジェクトを見る',
-    hero_cta_contact: 'お問い合わせ',
-    about_title: '自己紹介',
-    about_subtitle: '私についてもっと知る',
-    about_heading: 'バックエンド開発者＆元ツアーガイド',
-    about_p1:
-      'Aptech AcademyでAdvanced Diploma in Software Engineering（ADSE）を取得中、Java Spring BootとPHP Laravelを使用した堅牢なRESTful APIとマイクロサービスの構築を専門としています。',
-    about_p2:
-      '250人以上の国際観光客向けのバイクツアーガイドとしての独特な背景により、優れた英語コミュニケーションスキルとプレッシャーの高い状況での迅速な適応能力を身につけました。',
-    about_p3:
-      'Backend/Java/Laravelのインターンシップ機会を積極的に探しており、技術的専門知識を適用し、ペースの速い開発チームで高い影響を与えるソリューションを提供します。',
-    stat_tours: 'ツアー実施',
-    stat_projects: 'プロジェクト',
-    stat_countries: '国',
-    skills_title: '技術スキル',
-    skills_subtitle: '使用する技術',
-    skill_advanced: '上級',
-    skill_proficient: '熟練',
-    skill_intermediate: '中級',
-    exp_title: '経験',
-    exp_subtitle: '私のキャリア',
-    exp_job_title: 'スクーターツアーガイド',
-    exp_job_company: 'フリーランス観光サービス',
-    exp_job_1:
-      'サイゴンで国際観光客向けに250以上のバイク/スクーターツアーを主導・支援',
-    exp_job_2:
-      'ベトナムの歴史、文化、食べ物、隠れたスポットについて英語でのツアーを毎日実施',
-    exp_job_3:
-      '50カ国以上の観光客との交流を通じて高度な英語コミュニケーションスキルを磨く',
-    exp_job_4: 'プレッシャーの高い環境でのリーダーシップと迅速な問題解決を実証',
-    exp_job_5:
-      'すべてのゲストが安全で思い出に残る体験を持てるよう、一貫してポジティブな姿勢を維持',
-    projects_title: '注目のプロジェクト',
-    projects_subtitle: '最近の作業と成果',
-    project1_meta: '個人プロジェクト | 2025年11月 – 2025年12月',
-    project1_desc:
-      'Laravel APIバックエンドとReact/Viteフロントエンドを使用したフルスタックメモアプリ。トークンベース認証、OTPパスワードリセット、分析付き管理ダッシュボードを実装。',
-    project2_meta: 'チームプロジェクト（5人） | 2025年6月',
-    project2_desc:
-      'LaravelとBladeテンプレートを使用したEコマースプラットフォーム。ミドルウェアを使用したユーザー認証、リアルタイム更新のAJAX対応カートシステムを実装。',
-    project_demo: 'デモを見る',
-    project_repo: 'リポジトリ',
-    edu_title: '学歴と資格',
-    edu_subtitle: '学歴と成果',
-    edu_degree: 'ソフトウェアエンジニアリングの上級ディプロマ',
-    edu_desc:
-      'ソフトウェア開発方法論、プログラミング言語、データベース管理、システム分析をカバーする包括的なプログラム。',
-    cert1_desc:
-      '本番環境対応のGen AI機能の構築に焦点を当てた実践的な認定：プロンプトエンジニアリング、RAGパイプライン、LLM統合。',
-    cert2_desc:
-      '実世界のアプリケーションと倫理的実装をカバーするGenerative AIワークフローの包括的な紹介。',
-    contact_title: 'お問い合わせ',
-    contact_subtitle: '一緒に働きましょう！',
-    form_name: '名前',
-    form_email: 'メール',
-    form_message: 'メッセージ',
-    form_submit: 'メッセージを送信',
-    footer_text: '© 2025 Vo Cao Thanh Dat (Dave). 💻 と ☕ で作成',
-  },
 };
 
 let currentLang = localStorage.getItem('language') || 'en';
-let currentTheme = localStorage.getItem('theme') || 'cyberpunk';
+let currentTheme = localStorage.getItem('theme') || 'midnight';
 
 // Apply saved preferences
 document.documentElement.setAttribute('data-theme', currentTheme);
@@ -450,12 +377,6 @@ const texts = {
     'Chuyên Viên Laravel',
     'Kiến Trúc Sư API',
   ],
-  ja: [
-    'バックエンド開発者',
-    'Javaエキスパート',
-    'Laravel専門家',
-    'APIアーキテクト',
-  ],
 };
 let textIndex = 0;
 let charIndex = 0;
@@ -537,8 +458,7 @@ contactForm.addEventListener('submit', (e) => {
       currentLang === 'en'
         ? "Message sent! I'll get back to you soon."
         : currentLang === 'vi'
-        ? 'Tin nhắn đã gửi! Tôi sẽ phản hồi bạn sớm.'
-        : 'メッセージが送信されました！すぐに返信します。',
+        : 'Tin nhắn đã gửi! Tôi sẽ phản hồi bạn sớm.',
     );
     contactForm.reset();
     submitBtn.textContent = originalText;
