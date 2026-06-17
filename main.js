@@ -1,5 +1,3 @@
-const currentYear = new Date().getFullYear();
-
 const translations = {
   en: {
     nav_home: 'Home',
@@ -73,7 +71,7 @@ const translations = {
     form_email: 'Email',
     form_message: 'Message',
     form_submit: 'Send Message',
-    footer_text: `© ${currentYear} Vo Cao Thanh Dat (Dave). Built with 💻 and ☕`,
+    footer_text: '© <span id="year-holder">2026</span> Vo Cao Thanh Đat (Dave). Built with 💻 and ☕',
   },
   vi: {
     nav_home: 'Trang chủ',
@@ -147,7 +145,7 @@ const translations = {
     form_email: 'Email',
     form_message: 'Tin nhắn',
     form_submit: 'Gửi Tin Nhắn',
-    footer_text: `© ${currentYear} Võ Cao Thành Đạt (Dave). Được xây dựng với 💻 và ☕`,
+    footer_text: '© <span id="year-holder">2026</span> Vo Cao Thanh Đat (Dave). Built with 💻 and ☕',
   },
 };
 
@@ -337,9 +335,14 @@ function updateTranslations() {
   document.querySelectorAll('[data-tr]').forEach((el) => {
     const key = el.getAttribute('data-tr');
     if (translations[currentLang] && translations[currentLang][key]) {
-      el.textContent = translations[currentLang][key];
+      el.innerHTML = translations[currentLang][key];
     }
   });
+  
+  const yearHolder = document.getElementById('year-holder');
+  if (yearHolder) {
+    yearHolder.textContent = new Date().getFullYear();
+  }
 }
 
 // Theme switcher
