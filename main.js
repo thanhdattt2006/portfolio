@@ -445,20 +445,14 @@ contactForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const submitBtn = contactForm.querySelector('.submit-btn');
   const originalText = submitBtn.textContent;
-  submitBtn.textContent =
-    currentLang === 'en'
-      ? 'Sending...'
-      : currentLang === 'vi'
-      ? 'Đang gửi...'
-      : '送信中...';
+  submitBtn.textContent = currentLang === 'vi' ? 'Đang gửi...' : 'Sending...';
   submitBtn.classList.add('loading', 'opacity-80', 'pointer-events-none');
 
   setTimeout(() => {
     alert(
-      currentLang === 'en'
-        ? "Message sent! I'll get back to you soon."
-        : currentLang === 'vi'
-        : 'Tin nhắn đã gửi! Tôi sẽ phản hồi bạn sớm.',
+      currentLang === 'vi'
+        ? 'Tin nhắn đã gửi! Tôi sẽ phản hồi bạn sớm.'
+        : "Message sent! I'll get back to you soon."
     );
     contactForm.reset();
     submitBtn.textContent = originalText;
