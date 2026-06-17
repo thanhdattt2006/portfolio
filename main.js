@@ -1,3 +1,5 @@
+const currentYear = new Date().getFullYear();
+
 const translations = {
   en: {
     nav_home: 'Home',
@@ -71,7 +73,7 @@ const translations = {
     form_email: 'Email',
     form_message: 'Message',
     form_submit: 'Send Message',
-    footer_text: '© 2025 Vo Cao Thanh Dat (Dave). Built with 💻 and ☕',
+    footer_text: `© ${currentYear} Vo Cao Thanh Dat (Dave). Built with 💻 and ☕`,
   },
   vi: {
     nav_home: 'Trang chủ',
@@ -145,7 +147,7 @@ const translations = {
     form_email: 'Email',
     form_message: 'Tin nhắn',
     form_submit: 'Gửi Tin Nhắn',
-    footer_text: '© 2025 Võ Cao Thành Đạt (Dave). Được xây dựng với 💻 và ☕',
+    footer_text: `© ${currentYear} Võ Cao Thành Đạt (Dave). Được xây dựng với 💻 và ☕`,
   },
 };
 
