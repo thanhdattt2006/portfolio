@@ -51,9 +51,9 @@ const translations = {
     project1_meta: 'Personal Project | Nov 2025 – Dec 2025',
     project1_desc:
       'Full-stack MERN-stack note-taking app with Laravel API backend and React/Vite frontend. Features token-based authentication, OTP password reset, admin dashboard with analytics.',
-    project2_meta: 'Team Project (5 Members) | June 2025',
+    project2_meta: 'Personal Project | Present',
     project2_desc:
-      'E-commerce platform with Laravel and Blade template. Implemented user authentication with middleware, AJAX-powered cart system with real-time updates, search functionality.',
+      'Engineered a low-latency Spring Boot backend utilizing MySQL and Redis to resolve concurrent queueing race conditions. Integrated P2P WebRTC video/voice and secure STOMP WebSockets for seamless 3-minute pairings.',
     project_demo: 'Live Demo',
     project_repo: 'Repository',
     edu_title: 'Education & Certifications',
@@ -125,9 +125,9 @@ const translations = {
     project1_meta: 'Dự Án Cá Nhân | Tháng 11 2025 – Tháng 12 2025',
     project1_desc:
       'Ứng dụng ghi chú full-stack với Laravel API backend và React/Vite frontend. Tích hợp xác thực token, đặt lại mật khẩu OTP, bảng điều khiển admin với phân tích.',
-    project2_meta: 'Dự Án Nhóm (5 Thành Viên) | Tháng 6 2025',
+    project2_meta: 'Dự Án Cá Nhân | Hiện Tại',
     project2_desc:
-      'Nền tảng thương mại điện tử với Laravel và Blade template. Triển khai xác thực người dùng với middleware, hệ thống giỏ hàng AJAX với cập nhật thời gian thực.',
+      'Xây dựng hệ thống backend độ trễ thấp bằng Spring Boot, MySQL và Redis để giải quyết các luồng hàng đợi đồng thời. Tích hợp gọi thoại/video P2P bằng WebRTC và STOMP WebSockets cho các cuộc trò chuyện 3 phút mượt mà.',
     project_demo: 'Xem Demo',
     project_repo: 'Mã Nguồn',
     edu_title: 'Học Vấn & Chứng Chỉ',
