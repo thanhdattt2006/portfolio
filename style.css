@@ -8,6 +8,7 @@
   --text-primary: #ededed;
   --text-secondary: #a1a1aa;
   --accent-primary: #3b82f6;
+  --accent-primary-rgb: 59, 130, 246;
   --accent-secondary: #8b5cf6;
   --gradient-1: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
 }
@@ -20,6 +21,7 @@
   --text-primary: #f8f8f2;
   --text-secondary: #bd93f9;
   --accent-primary: #ff79c6;
+  --accent-primary-rgb: 255, 121, 198;
   --accent-secondary: #bd93f9;
   --gradient-1: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
 }
@@ -32,6 +34,7 @@
   --text-primary: #eceff4;
   --text-secondary: #d8dee9;
   --accent-primary: #88c0d0;
+  --accent-primary-rgb: 136, 192, 208;
   --accent-secondary: #81a1c1;
   --gradient-1: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
 }
@@ -44,6 +47,7 @@
   --text-primary: #e6e6e2;
   --text-secondary: #a3b18a;
   --accent-primary: #588157;
+  --accent-primary-rgb: 88, 129, 87;
   --accent-secondary: #3a5a40;
   --gradient-1: linear-gradient(135deg, #a3b18a, #588157);
 }

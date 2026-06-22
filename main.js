@@ -444,6 +444,113 @@ backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+// Premium Toast Notification System
+class PremiumToast {
+  static container = null;
+
+  static init() {
+    if (!this.container) {
+      this.container = document.createElement('div');
+      this.container.className = 'fixed top-6 right-6 z-[10000] flex flex-col gap-4 pointer-events-none';
+      document.body.appendChild(this.container);
+    }
+  }
+
+  static show(message, type = 'success') {
+    this.init();
+
+    const toast = document.createElement('div');
+    
+    let icon = '';
+    let colorHex = '';
+    let borderClass = '';
+    let glowClass = '';
+    let titleEn = '';
+    let titleVi = '';
+
+    if (type === 'success') {
+      icon = '<i class="fas fa-check-circle text-[#4ade80] text-2xl drop-shadow-[0_0_8px_rgba(74,222,128,0.5)]"></i>';
+      colorHex = '#4ade80';
+      borderClass = 'border-[#4ade80]/30';
+      glowClass = 'shadow-[0_0_30px_rgba(74,222,128,0.15)]';
+      titleEn = 'Success';
+      titleVi = 'Thành công';
+    } else if (type === 'error') {
+      icon = '<i class="fas fa-exclamation-circle text-[#f87171] text-2xl drop-shadow-[0_0_8px_rgba(248,113,113,0.5)]"></i>';
+      colorHex = '#f87171';
+      borderClass = 'border-[#f87171]/30';
+      glowClass = 'shadow-[0_0_30px_rgba(248,113,113,0.15)]';
+      titleEn = 'Error';
+      titleVi = 'Lỗi';
+    } else {
+      icon = '<i class="fas fa-bell text-accent-primary text-2xl drop-shadow-[0_0_8px_rgba(var(--accent-primary-rgb),0.5)]"></i>';
+      colorHex = 'var(--accent-primary)';
+      borderClass = 'border-accent-primary/30';
+      glowClass = 'shadow-[0_0_30px_rgba(var(--accent-primary-rgb),0.15)]';
+      titleEn = 'Notification';
+      titleVi = 'Thông báo';
+    }
+
+    const title = currentLang === 'vi' ? titleVi : titleEn;
+
+    toast.className = `glass-panel flex items-start gap-4 w-[320px] sm:w-[380px] p-5 rounded-2xl border ${borderClass} ${glowClass} transform translate-x-[120%] opacity-0 transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] pointer-events-auto overflow-hidden relative group backdrop-blur-2xl bg-bg-secondary/90`;
+    
+    toast.innerHTML = `
+      <div class="flex-shrink-0 relative z-10 animate-[bounce_2s_infinite]">
+        ${icon}
+      </div>
+      <div class="flex-1 min-w-0 relative z-10 pt-0.5">
+        <p class="text-sm font-bold text-text-primary mb-1 tracking-wider uppercase font-mono" style="color: ${colorHex}">${title}</p>
+        <p class="text-sm text-text-secondary leading-relaxed">${message}</p>
+      </div>
+      <button class="absolute top-4 right-4 text-text-secondary hover:text-white transition-colors z-10 w-6 h-6 flex items-center justify-center rounded-full hover:bg-white/10" onclick="this.closest('.glass-panel').classList.add('translate-x-[120%]', 'opacity-0'); setTimeout(() => this.closest('.glass-panel').remove(), 500);">
+        <i class="fas fa-times text-xs"></i>
+      </button>
+      <div class="absolute bottom-0 left-0 h-1 w-full bg-black/20 overflow-hidden">
+        <div class="h-full bg-current progress-bar" style="width: 100%; transform-origin: left; color: ${colorHex}; transition: transform 4s linear;"></div>
+      </div>
+      <div class="absolute inset-0 opacity-5 bg-gradient-to-tr from-transparent to-current pointer-events-none" style="color: ${colorHex}"></div>
+    `;
+
+    this.container.appendChild(toast);
+
+    requestAnimationFrame(() => {
+      toast.classList.remove('translate-x-[120%]', 'opacity-0');
+    });
+
+    const progressBar = toast.querySelector('.progress-bar');
+    setTimeout(() => {
+      progressBar.style.transform = 'scaleX(0)';
+    }, 50);
+
+    let timeoutId = setTimeout(() => {
+      removeToast();
+    }, 4000);
+
+    toast.addEventListener('mouseenter', () => {
+      clearTimeout(timeoutId);
+      const computedStyle = window.getComputedStyle(progressBar);
+      const currentTransform = computedStyle.getPropertyValue('transform');
+      progressBar.style.transition = 'none';
+      progressBar.style.transform = currentTransform;
+    });
+
+    toast.addEventListener('mouseleave', () => {
+      progressBar.style.transition = 'transform 2s linear';
+      progressBar.style.transform = 'scaleX(0)';
+      timeoutId = setTimeout(() => {
+        removeToast();
+      }, 2000);
+    });
+
+    function removeToast() {
+      toast.style.transitionTimingFunction = 'ease-in';
+      toast.classList.add('translate-x-[120%]', 'opacity-0');
+      setTimeout(() => toast.remove(), 500);
+    }
+  }
+}
+
 // Contact form submission
 const contactForm = document.getElementById('contactForm');
 contactForm.addEventListener('submit', (e) => {
@@ -455,19 +562,21 @@ contactForm.addEventListener('submit', (e) => {
 
   emailjs.sendForm('service_5zressf', 'template_i1h0kbo', contactForm)
     .then(() => {
-      alert(
+      PremiumToast.show(
         currentLang === 'vi'
           ? 'Tin nhắn đã gửi thành công! Tôi sẽ phản hồi bạn sớm nhất có thể.'
-          : "Message sent successfully! I'll get back to you as soon as possible."
+          : "Message sent successfully! I'll get back to you as soon as possible.",
+        'success'
       );
       contactForm.reset();
     })
     .catch((error) => {
       console.error('EmailJS Error:', error);
-      alert(
+      PremiumToast.show(
         currentLang === 'vi'
           ? 'Có lỗi xảy ra khi gửi tin nhắn. Vui lòng thử lại sau.'
-          : "Something went wrong. Please try again later."
+          : "Something went wrong. Please try again later.",
+        'error'
       );
     })
     .finally(() => {
@@ -516,7 +625,7 @@ window.addEventListener('keydown', (e) => {
 
 function activateRetroMode() {
   document.body.classList.add('retro-mode');
-  alert('🎮 RETRO MODE ACTIVATED! 🎮');
+  PremiumToast.show('🎮 RETRO MODE ACTIVATED! 🎮', 'info');
   
   setTimeout(() => {
     document.body.classList.remove('retro-mode');
